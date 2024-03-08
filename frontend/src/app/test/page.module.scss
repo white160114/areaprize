@@ -1,0 +1,91 @@
+// サインインModal
+
+.modalWrap {
+    width: 20rem;
+    height: 30rem;
+    background-color: #ffffff;
+
+    .modalHeader {
+        width: 100%;
+        height: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #5188B1;
+        position: relative;
+
+        .backBtn {
+            border: none;
+            background: none;
+            color: #ffffff;
+            position: absolute;
+            top: 2.3rem;
+            left: 1rem;
+        }
+
+        & h4 {
+            text-align: center;
+            color: #ffffff;
+            text-align: center;
+            font-size: 2rem;
+        }
+    }
+
+    .contentBox {
+        // width: 100%;
+        height: 15rem;
+        display: flex;
+        justify-content: flex-start;
+        // align-items: center;
+        flex-direction: column;
+        padding: 1rem;
+        gap: .5rem;
+
+        & input {
+            width: 18rem;
+            height: 1.3rem;
+            border: #D9D9D9 1px solid;
+        }
+
+        .checkBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            & p {
+                font-size: .8rem;
+            }
+
+            & input {
+                width: 3rem;
+                scale: (.7);
+            }
+        }
+    }
+
+    .btnBox {
+        width: 100%;
+        height: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .btn {
+            border: none;
+            width: 12.5rem;
+            height: 3rem;
+            color: #ffffff;
+            background-color: #5188B1;
+            border-radius: 20px;
+            box-shadow: 4px 4px 4px #d9d9d9;
+        }
+    }
+}
+
+// 
+
+// アップロードModal
+
+
+
+// 
