@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import style from './page.module.scss'
 import { Modal } from '@/components/Modal'
+import { Header } from '@/components/Header'
 
 export default function Test() {
 
@@ -15,6 +16,7 @@ export default function Test() {
     return (
         <>
             <div>
+                <Header />
                 <button
                     onClick={() => setState(true)}
                 >click</button>
