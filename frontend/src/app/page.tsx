@@ -12,8 +12,17 @@ type Props = {
   tabText: string
 }
 
-export default function Home() {
 
+const url = "https://areaprize.kurumimnm.net/data/all";
+
+const fetchData = async () => {
+  const response = await fetch(url);
+  const all_data = await response.json();
+
+  return all_data;
+};
+
+export default function Home() {
   // 解説のするときのTabcomponentを作成
   function Tab(props: Props) {
 
@@ -34,14 +43,38 @@ export default function Home() {
     )
   }
 
+  const [userNames, setUserNames] = useState<string[]>([]);
+  const [testData, setTestData] = useState<string[]>([]);
+
+
+  useEffect(() => {
+    const fetchDataAndUpdateUserNames = async () => {
+      const data: any = await fetchData();
+
+      const names = data.USERS.map((user: any) => user.user_name);
+
+      const test_data = data.TEST.map((text: any) => text.text);
+
+      setUserNames(names);
+      setTestData(test_data);
+    };
+
+    fetchDataAndUpdateUserNames();
+
+    const intervalId = setInterval(fetchDataAndUpdateUserNames, 10000); // 10秒ごとにデータを取得
+
+    return () => clearInterval(intervalId); // クリーンアップ関数でタイマーをクリア
+  }, []); // 空の依存配列を渡して初回のみ実行する
+
+  console.log(userNames, testData);
+
+
   return (
     <>
       <div className={style.homeWrap}>
 
         <header className={style.head}>
-          <h1>
-            Home
-          </h1>
+          <h1>Home</h1>
         </header>
 
         <div className={style.mainView}>
@@ -99,7 +132,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div>
+        <div >
 
         </div>
       </div>
