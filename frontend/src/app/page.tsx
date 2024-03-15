@@ -78,21 +78,21 @@ export default function Home() {
         </header>
 
         <div className={style.mainView}>
-          <img src="img/FlameLeft.svg" alt="lefttop" />
+          <img src="image/FlameLeft.svg" alt="lefttop" />
           <div className={style.mainViewContent}>
             <div className={style.mainViewContentBox}>
               <h2>
                 <figure>
-                  <img src="img/areaprize.svg" alt="logo" />
+                  <img src="image/areaprize.svg" alt="logo" />
                 </figure>
               </h2>
               <p>地域の良さを発信し、想像力を磨く旅へ</p>
             </div>
             <figure>
-              <img src="img/JapanMap.svg" alt="japanMap" />
+              <img src="image/JapanMap.svg" alt="japanMap" />
             </figure>
           </div>
-          <img src="img/FlameRight.svg" alt="rightbottom" />
+          <img src="image/FlameRight.svg" alt="rightbottom" />
         </div>
 
         <div className={style.explanationBox}>
@@ -105,29 +105,29 @@ export default function Home() {
             <div className={style.explanationContent}>
               <Tab tabText='旅の行き先がランダムに選ばれるよ！' />
               <figure>
-                <img src="img/Step1.svg" alt="" />
+                <img src="image/Step1.svg" alt="" />
               </figure>
             </div>
             <div className={style.explanationContent}>
               <figure>
-                <img src="img/Step2.svg" alt="" />
+                <img src="image/Step2.svg" alt="" />
               </figure>
               <Tab tabText='選ばれた場所に旅に出よう！' />
             </div>
             <div className={style.explanationContent}>
               <Tab tabText='旅の思い出を記録しよう！' />
               <figure>
-                <img src="img/Step3.svg" alt="" />
+                <img src="image/Step3.svg" alt="" />
               </figure>
             </div>
             <div className={style.explanationContent}>
               <figure>
-                <img src="img/Step4.svg" alt="" />
+                <img src="image/Step4.svg" alt="" />
               </figure>
               <Tab tabText='仲間の旅の記録を評価しよう！' />
             </div>
             <figure>
-              <img src="img/rank.svg" alt="" />
+              <img src="image/rank.svg" alt="" />
             </figure>
           </div>
         </div>
