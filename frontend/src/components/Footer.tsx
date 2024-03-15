@@ -8,9 +8,11 @@ export function Footer() {
             <footer className={style.footer}>
                 <p>お問い合わせ</p>
                 <label htmlFor="">tel:</label>
-                <input type="text" value={'012-XXXX-XXXX'} />
+                {/* <input type="text" value={''} /> */}
+                <p>012-XXXX-XXXX</p>
                 <label htmlFor="">mail:</label>
-                <input type="text" value={'mailadress@yahoo.co.jp'} />
+                {/* <input type="text" value={'mailadress@yahoo.co.jp'} /> */}
+                <p>mailadress@yahoo.co.jp</p>
             </footer>
         </>
     )

@@ -20,14 +20,14 @@ type Props = {
 }
 
 
-// const url = "https://areaprize.kurumimnm.net/data/all";
+const url = "https://areaprize.kurumimnm.net/data/all";
 
-// const fetchData = async () => {
-//   const response = await fetch(url);
-//   const all_data = await response.json();
+const fetchData = async () => {
+  const response = await fetch(url);
+  const all_data = await response.json();
 
-//   return all_data;
-// };
+  return all_data;
+};
 
 export default function Home() {
   // 解説のするときのTabcomponentを作成
@@ -50,30 +50,30 @@ export default function Home() {
     )
   }
 
-  // const [userNames, setUserNames] = useState<string[]>([]);
-  // const [testData, setTestData] = useState<string[]>([]);
+  const [userNames, setUserNames] = useState<string[]>([]);
+  const [testData, setTestData] = useState<string[]>([]);
 
 
-  // useEffect(() => {
-  //   const fetchDataAndUpdateUserNames = async () => {
-  //     const data: any = await fetchData();
+  useEffect(() => {
+    const fetchDataAndUpdateUserNames = async () => {
+      const data: any = await fetchData();
 
-  //     const names = data.USERS.map((user: any) => user.user_name);
+      const names = data.USERS.map((user: any) => user.user_name);
 
-  //     const test_data = data.TEST.map((text: any) => text.text);
+      const test_data = data.TEST.map((text: any) => text.text);
 
-  //     setUserNames(names);
-  //     setTestData(test_data);
-  //   };
+      setUserNames(names);
+      setTestData(test_data);
+    };
 
-  //   fetchDataAndUpdateUserNames();
+    fetchDataAndUpdateUserNames();
 
-  //   const intervalId = setInterval(fetchDataAndUpdateUserNames, 10000); // 10秒ごとにデータを取得
+    const intervalId = setInterval(fetchDataAndUpdateUserNames, 10000); // 10秒ごとにデータを取得
 
-  //   return () => clearInterval(intervalId); // クリーンアップ関数でタイマーをクリア
-  // }, []); // 空の依存配列を渡して初回のみ実行する
+    return () => clearInterval(intervalId); // クリーンアップ関数でタイマーをクリア
+  }, []); // 空の依存配列を渡して初回のみ実行する
 
-  // console.log(userNames, testData);
+  console.log(userNames, testData);
 
 
   return (
@@ -155,7 +155,7 @@ export default function Home() {
               <li>月末 投票締め切り</li>
             </ul>
             <div className={style.btnBox}>
-              <button className={style.btn}>旅に出る！</button>
+              <button className={style.btn}>思い出を残す！</button>
             </div>
           </div>
           <div className={style.rightBox}>

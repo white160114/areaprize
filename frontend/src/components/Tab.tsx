@@ -22,12 +22,22 @@ const Tab = (props: PropsType) => {
 
     // 下記の内容はダミーデータ
     const [tabs, setTabs] = useState<PropsType>({
-        tab01: 'Webサイト部門',
-        tab02: 'グラフィック部門',
-        children01: null,
-        children02: null,
-        className: ''
+        tab01: props.tab01,
+        tab02: props.tab02,
+        children01: props.children01,
+        children02: props.children02,
+        className: props.className
     })
+
+    useEffect(() => {
+        setTabs({
+            tab01: props.tab01,
+            tab02: props.tab02,
+            children01: props.children01,
+            children02: props.children02,
+            className: props.className
+        })
+    }, [props])
 
     return (
         <div className={style.tabs} >

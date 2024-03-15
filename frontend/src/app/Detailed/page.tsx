@@ -2,14 +2,15 @@
 
 import style from '@/styles/Detailed/page.module.scss'
 
+import { Header } from '@/components/Header'
+import { Footer } from '@/components/Footer'
+
 export default function Detailed() {
     return (
         <>
             <div className={style.detaileWrap}>
                 {/* headerComponentの挿入 */}
-                <header className={style.header}>
-                    <h1>Detailed</h1>
-                </header>
+                <Header />
 
                 <div className={style.detaileContent}>
                     <div className={style.user}>
@@ -82,6 +83,8 @@ export default function Detailed() {
                         </p>
                     </div>
                 </div>
+
+                <Footer />
             </div>
         </>
     )

@@ -10,13 +10,10 @@
     color: #ffffff;
 
     & p {
-        margin-left: 2rem;
         color: #ffffff;
     }
 
-    & input {
-        border: none;
-        background: none;
-        color: #ffffff;
+    & p:first-child {
+        margin-right: 2rem;
     }
 }

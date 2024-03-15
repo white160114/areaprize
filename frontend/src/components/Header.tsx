@@ -24,7 +24,9 @@ export function Header() {
         <>
             <header className={style.header}>
                 <h1>
-                    <figure>
+                    <figure
+                        onClick={() => location.href = '/'}
+                    >
                         <img src="image/areaprize.svg" alt="logo" />
                     </figure>
                 </h1>

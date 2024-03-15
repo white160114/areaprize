@@ -1,13 +1,15 @@
 'use client';
 import { useEffect, useState } from 'react';
 import style from "@/styles/Vote/vote.module.scss"
+import { Header } from '@/components/Header'
+import { Footer } from '@/components/Footer'
 import Tab from "@/components/Tab"
 import Card from "@/components/Card"
 
 const categoryUrl = "https://areaprize.kurumimnm.net/data/CATEGORY";
 const workUrl = "https://areaprize.kurumimnm.net/work/data";
 const userUrl = "https://areaprize.kurumimnm.net/data/USERS";
-const rankUrl ="https://areaprize.kurumimnm.net/data/RANKS";
+const rankUrl = "https://areaprize.kurumimnm.net/data/RANKS";
 
 const fetchData = async (url: string) => {
     const response = await fetch(url);
@@ -32,7 +34,7 @@ export default function Vote() {
     const [userData, setUserData] = useState<any[]>([]);
     const [rankData, setRankData] = useState<any[]>([]);
     // Columns
-    const [categoryName, setCategoryName] = useState<string[]>([]); 
+    const [categoryName, setCategoryName] = useState<string[]>([]);
 
     useEffect(() => {
         const fetchDataAndUpdate = async () => {
@@ -68,14 +70,15 @@ export default function Vote() {
         for (let i = 0; i < rankData.length; i++) {
             const rank = rankData[i];
             if (rankPoint >= rank.low_point && rankPoint <= rank.high_point) {
-                return rank.icon; 
+                return rank.icon;
             }
         }
-        return ""; 
+        return "";
     };
 
     return (
         <div className={style.wrap}>
+            <Header />
             <div>旅の記録</div>
             <div>お題</div>
             <Tab
@@ -84,6 +87,7 @@ export default function Vote() {
                 tab02={categoryName[1]}
                 children02={<div>{getCategoryWorks(2)}</div>}
             />
+            <Footer />
         </div>
     );
 }
