@@ -1,0 +1,50 @@
+.wrap{
+    margin: 10px 50px;
+    width: 900px;
+    border: solid #D9D9D9;
+    box-shadow: inset 1px 1px 8px #D9D9D9;    
+
+    .user_wrap{
+                display: flex;
+                margin: auto 50px auto ;       
+
+        .userIcon{ 
+            margin: 50px 0px;
+        }
+        .userName{
+            margin: 0 20px 0 ;
+            font-size: 32px;
+            font-style: normal;
+
+        }
+        .rank{
+            margin: 0px 0px;
+
+        }
+        .bookmark{
+            height: 40;
+            width: 40;
+            margin: auto 30px auto 250px;
+        }
+        .like{
+            height: 40;
+            width: 40;
+            margin: auto 0px auto 10px;
+// 
+
+        }
+    }
+    .contents{
+        width: 800px;
+        height: 300px;
+        margin: 0px 50px 10px;
+        overflow-y: scroll;
+        
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        
+    }
+    .contents::-webkit-scrollbar {
+    display:none;
+    }
+}
