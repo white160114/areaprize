@@ -11,7 +11,7 @@ const workUrl = "https://areaprize.kurumimnm.net/work/data";
 const userUrl = "https://areaprize.kurumimnm.net/data/USERS";
 const rankUrl = "https://areaprize.kurumimnm.net/data/RANKS";
 
-const fetchData= async (url: string) => {
+const fetchData = async (url: string) => {
     const response = await fetch(url);
     const data = await response.json();
     return data;
@@ -79,8 +79,20 @@ export default function Vote() {
     return (
         <div className={style.wrap}>
             <Header />
-            <div>旅の記録</div>
-            <div>お題</div>
+            <div className={style.themaBox}>
+                <p>旅の記録集</p>
+                <h3>「大阪府の通天閣を盛り上げよう！」</h3>
+                <div className={style.evaluationBox}>
+                    <div className={style.evaluation}>
+                        <h4>評価の基準！</h4>
+                        <ul>
+                            <li>通天閣を盛り上げれているか</li>
+                            <li>デザイン面で優れているか</li>
+                            <li>プログラム面で優れているか</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <Tab
                 tab01={categoryName[0]}
                 children01={<div>{getCategoryWorks(1)}</div>}
