@@ -1,0 +1,56 @@
+.tabs {
+    flex-wrap:wrap;
+    display: flex;
+    justify-content: center; 
+    padding-bottom: 50px;
+    
+
+
+    .tab_label {
+        width: 500px;
+        height: 50px;
+        background-color: #AED265;
+        line-height: 50px;
+        font-size: 15px;
+        color: white;
+        text-align: center;
+        display: block;
+        float: left;
+        order: -1;
+    }
+
+    .tab_input {
+        display: none;
+    }
+
+    .tab_input+ .tab_label{
+        border-bottom: 3px solid #AED265
+    }
+    /*memo:選択しているinputタグの直後にある[.tab_label]*/
+    input:checked + .tab_label {
+        background-color: #AED265;
+        color: #5188B1;
+        border-bottom: 3px solid #5188B1
+    }
+    
+    .tab_content {
+        display: none;
+        width: 1000px;
+        background-color: white;
+        padding: 10px 0;
+    }
+    /* クリックしたときのコンテンツの表示*/
+    #tab01:checked ~ #tab01_content,
+    #tab02:checked ~ #tab02_content {
+        display: block;
+    }
+
+
+    /* タブにカーソルを当てた時 */
+    .tab_label:hover {
+        background-color: #9FC15B;
+        color: white;
+        cursor: pointer;
+        border-bottom: 3px solid #9FC15B
+    }
+}
