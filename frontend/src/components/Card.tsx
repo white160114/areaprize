@@ -44,11 +44,11 @@ const Card = (props: PropsType) => {
                     </div>
                 
             </div>
-            <div className={style.contents} >
+            <div className={style.contents}>
                 <figure>
                 <img className='bookmark' src={titleImage} alt={workName} width={800} height={800} />
                 </figure>
-                </div>
+            </div>
         </div>
     );
 };

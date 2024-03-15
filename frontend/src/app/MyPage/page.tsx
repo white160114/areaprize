@@ -2,6 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import style from '@/styles/MyPage/mypage.module.scss'
+
+
+import { Header } from '@/components/Header'
+import { Footer } from '@/components/Footer'
+
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import Tab from '@/components/Tab';
 import Card from '@/components/Card';
@@ -103,9 +108,7 @@ export default function MyPage() {
             <div className={style.myPageWrap}>
 
                 {/* 作ったcomponentを挿入 */}
-                <header className={style.sampleHeader}>
-                    <h1>mypage</h1>
-                </header>
+                <Header />
 
                 <form action="" className={style.formBox}>
                     <div className={style.formTop}>
@@ -116,10 +119,10 @@ export default function MyPage() {
                             </figure>
                         </div>
                         <div className={style.formContent}>
-                            <label htmlFor="">ユーザーネーム</label>
+                          <label htmlFor="">ユーザーネーム</label>
                             <input type="text" defaultValue={usersData[loginid]?.user_name || ''} />
-                            <label htmlFor="">出身地</label>
-                            <input type="text" />
+                           
+                           
                         </div>
                         {/* 編集するかしないかで表示する矢印の方向を変える */}
                         {!accordion &&
@@ -139,9 +142,11 @@ export default function MyPage() {
                         <div className={style.formBottom}>
                             <div className={style.formContent}>
                                 <label htmlFor="">メールアドレス</label>
+
+
                                 <input type="text"  defaultValue={usersData[loginid]?.mail || ''}  /> 
-                                <label htmlFor="">パスワード</label>
-                                <input type="text" />
+                                
+
                             </div>
                             <div className={style.btnBox}>
                                 <button
@@ -173,6 +178,10 @@ export default function MyPage() {
                     </div>
                 </div>
 
+
+               
+
+
                 <Tab
     tab01='あなたの過去の記録'
     tab02='いいねした作品'
@@ -190,8 +199,7 @@ export default function MyPage() {
 />
 
 
-
-
+                <Footer />
             </div>
         </>
     )

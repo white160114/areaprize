@@ -142,4 +142,109 @@
             }
         }
     }
+
+    .themeBox {
+        width: 50rem;
+        height: 44rem;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #F2E9CC;
+        padding: 2rem;
+        border-radius: 30px;
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, .2) inset;
+        margin-top: 7rem;
+
+        .leftBox {
+            width: 3rem;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+
+            & div {
+                width: 2rem;
+                height: 2rem;
+                background-color: #5188B1;
+                border: 2px solid #517A5A;
+                border-radius: 50%;
+            }
+        }
+
+        .textBox {
+            width: 40rem;
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            & p {
+                font-size: 1.5rem;
+            }
+
+            & h2 {
+                font-size: 2.5rem;
+            }
+
+            .list {
+                width: 50%;
+                height: 50%;
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 2rem;
+
+                & li {
+                    font-size: 1rem;
+                }
+
+                .acc {
+                    transform: rotate(90deg);
+                }
+            }
+
+            .btnBox {
+                width: 15rem;
+                height: 3rem;
+                border: 1px solid #000000;
+                border-radius: 30px;
+                position: relative;
+                z-index: 999;
+
+                .btn {
+                    border: none;
+                    width: 15rem;
+                    height: 3rem;
+                    border-radius: 30px;
+                    background-color: #AED265;
+                    position: absolute;
+                    top: 2px;
+                    z-index: 1;
+                }
+            }
+        }
+
+        .rightBox {
+            width: 3rem;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+
+            & div {
+                width: 2rem;
+                height: 2rem;
+                background-color: #5188B1;
+                border: 2px solid #517A5A;
+                border-radius: 50%;
+            }
+        }
+    }
 }

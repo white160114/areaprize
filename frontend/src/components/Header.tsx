@@ -23,7 +23,13 @@ export function Header() {
     return (
         <>
             <header className={style.header}>
-                <h1>areaprize</h1>
+                <h1>
+                    <figure
+                        onClick={() => location.href = '/'}
+                    >
+                        <img src="image/areaprize.svg" alt="logo" />
+                    </figure>
+                </h1>
                 <nav>
                     <ul>
                         {navArray.map((v, idx) =>
