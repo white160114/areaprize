@@ -28,25 +28,29 @@ const Card = (props: PropsType) => {
     return (
         <div className={style.wrap}>
             <div className={style.user_wrap}>
-                <div className={style.userIcon}>
-                <PhotoIcon src={iconImage || "/image/ArianaGrande.jpg"} size={80} />
+                <div className={style.user_data}>
+                    <div className={style.userIcon}>
+                        <PhotoIcon src={iconImage || "/image/ArianaGrande.jpg"} size={80} />
+                    </div>
+                    <p className={style.userName}>{userName}</p>
+                    <div className={style.rank}>
+                        <figure>
+                            <img src={rankIcon} alt='rank'/>
+                        </figure>
+                    </div>
                 </div>
-                <p className={style.userName}>{userName}</p>
-                <div className={style.rank}>
-                    <img src={rankIcon}></img>
-                </div>
-                
+                <div className={style.user_evaluation}>
                     <div className={style.bookmark}>
-                    <input onClick={handleBookmarkClick} type="image" src='/image/bookmark.png' alt="bookmark"/>
+                        <input onClick={handleBookmarkClick} type="image" src='/image/bookmark.png' alt="bookmark"/>
                     </div>
                     <div className={style.like}>
-                    <input onClick={handleLikeClick} type="image" src='/image/like.png' alt="like"/>
+                        <input onClick={handleLikeClick} type="image" src='/image/like.png' alt="like"/>
                     </div>
-                
+                </div>
             </div>
             <div className={style.contents}>
                 <figure>
-                <img className='bookmark' src={titleImage} alt={workName} width={800} height={800} />
+                    <img className='bookmark' src={titleImage} alt={workName} />
                 </figure>
             </div>
         </div>

@@ -3,6 +3,56 @@
     height: 100%;
     text-align: center;
     background-color: #E0F1F1;
-    
-    
+
+    .themaBox {
+        width: 1000px;
+        height: 30rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin: 0 auto;
+
+        & p {
+            font-size: 2rem;
+        }
+
+        & h3 {
+            font-size: 3rem;
+        }
+
+        .evaluationBox {
+            width: 30rem;
+            height: 13rem;
+            border-radius: 20px;
+            box-shadow: 0 0 5px 5px rgba(0, 0, 0, .2) inset;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F2E9CC;
+
+
+            .evaluation {
+                width: 27rem;
+                height: 10rem;
+                border: 1px dotted #262626;
+                border-radius: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+                & h4 {
+                    font-size: 2rem;
+                }
+
+                & ul {
+                    width: 50%;
+                    height: 100%;
+                }
+            }
+
+        }
+    }
 }
