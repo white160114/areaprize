@@ -162,7 +162,7 @@ export default function MyPage() {
                     <p>現在のランク</p>
                     <div className={style.rankContent}>
                         <figure>
-                            <img src={userData[loginid][0]?.rank_icon} alt="" />
+                        <img src={userData[loginid]?.[0]?.rank_icon} alt="" />
                         </figure>
                         <div className={style.meterBox}>
                             <div className={style.meter}>
