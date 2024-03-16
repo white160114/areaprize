@@ -272,6 +272,31 @@ function DateFormat(item) {
 
   return item;
 }
+function ThemeFormat(item) {
+  item.forEach((row) => {
+    if (row.date != null) {
+      // 日本語の年月日を正規表現で抽出
+      const regex = /(\d{4})年(\d{1,2})月(\d{1,2})日/;
+      const match = regex.exec(row.date);
+
+      if (match) {
+        // 年、月、日を取得
+        const year = parseInt(match[1], 10);
+        const month = parseInt(match[2], 10) - 1; // JavaScriptの月は0から始まるため、1を引く
+        const day = parseInt(match[3], 10);
+
+        // 新しいDateオブジェクトを作成し、年月日を設定
+        const newDate = new Date(year, month, day);
+
+        // フォーマットされた日付を設定
+        row.date = `${newDate.getFullYear()}年${
+          newDate.getMonth() + 1
+        }月${newDate.getDate()}日`;
+      }
+    }
+  });
+  return item;
+}
 
 async function WorkData() {
   const all_data = await ReturnAllData();
@@ -450,6 +475,45 @@ async function UserData() {
   return users_data;
 }
 
+async function ThemeData() {
+  const all_data = await ReturnAllData();
+
+  theme_data = [];
+
+  all_data.theme.forEach((theme) => {
+    work_data = [];
+    all_data.works.forEach((work) => {
+      if (theme.theme_id == work.theme_id) {
+        work_data.push({
+          work_id: work.work_id,
+          work_name: work.work_name,
+          explanation: work.explanation,
+          technical_points: work.technical_points,
+          title_image: work.title_image,
+          good: work.good,
+          category_id: work.category_id,
+          user_id: work.made_by,
+          date: work.date,
+        });
+
+        // console.log(work_data);
+      }
+    });
+
+    theme_data.push({
+      theme_id: theme.theme_id,
+      prefecture_id: theme.prefecture_id,
+      theme_name: theme.theme,
+      date: theme.date,
+      works: work_data,
+    });
+
+    theme_data = ThemeFormat(theme_data);
+  });
+
+  return theme_data;
+}
+
 module.exports = {
   RunSQL,
   Tables,
@@ -459,4 +523,5 @@ module.exports = {
   UserData,
   WorkData,
   CommentData,
+  ThemeData,
 };

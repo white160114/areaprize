@@ -128,6 +128,8 @@ app.get("/:table/data", async (req, res) => {
     result = await SQL.WorkData();
   } else if (table == "comment") {
     result = await SQL.CommentData();
+  } else if (table == "theme") {
+    result = await SQL.ThemeData();
   } else {
     return res.send("unknown request");
   }
