@@ -11,6 +11,8 @@ import Card from '@/components/Card'
 
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { Modal } from '@/components/Modal'
+
 import { SiStyledcomponents } from 'react-icons/si';
 
 
@@ -64,6 +66,20 @@ export default function Home() {
     )
   }
 
+
+  // アップロードMOdalの表示
+  const [modal, setModal] = useState(false)
+
+  // Modalの内容を表示
+  function onClose() {
+    setModal(false)
+  }
+
+
+  const [userNames, setUserNames] = useState<string[]>([]);
+  const [testData, setTestData] = useState<string[]>([]);
+
+
   // Data(Table)
   const [categoryData, setCategoryData] = useState<any[]>([]);
   const [workData, setWorkData] = useState<any[]>([]);
@@ -71,6 +87,7 @@ export default function Home() {
   const [rankData, setRankData] = useState<any[]>([]);
   // Columns
   const [categoryName, setCategoryName] = useState<string[]>([]);
+
 
   useEffect(() => {
       const fetchDataAndUpdate = async () => {
@@ -113,8 +130,128 @@ export default function Home() {
     return "";
   };
 
+
+  // アップロード処理
+
+  const [formData, setFormData] = useState({
+    work_name: "",
+    category_id: "",
+    explanation: "",
+    technical_points: "",
+    title_image: "",
+  });
+
+  async function onSubmit(event: any) {
+    event.preventDefault();
+
+    const formDataToSend = new FormData();
+
+    Object.entries(formData).forEach(([key, value]) => {
+      formDataToSend.append(key, value);
+      // if (key === "title_image") {
+      //   formDataToSend.append(key, value); // ファイルの場合、appendメソッドを使用して追加
+      // } else {
+      //   formDataToSend.append(key, value);
+      // }
+    });
+
+    console.log(formData);
+
+    const response = await fetch(url, {
+      method: "POST",
+      body: formDataToSend,
+    });
+    const data = await response.json();
+    console.log("response=>", data);
+  }
+
+  function handleInputChange(event: any) {
+    const { name, value, files } = event.target;
+    if (name === "title_image" && files) {
+      const file = files[0];
+      setFormData({ ...formData, [name]: file });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  }
+
   return (
     <>
+      {modal &&
+        <Modal isOpen={modal}>
+          <div className={style.modalWrap}>
+            <div className={style.head}>
+              <button
+                className={style.backBtn}
+                onClick={onClose}
+              >＜戻る</button>
+              <h4>アップロード</h4>
+            </div>
+            <form onSubmit={onSubmit} className={style.formBox}>
+              <div className={style.detaWrap}>
+                <div className={style.detaBox}>
+                  <label htmlFor="">webサイト</label>
+                  <input
+                    type="radio"
+                    name="category_id"
+                    value={1}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className={style.detaBox}>
+                  <label htmlFor="">グラフィック</label>
+                  <input
+                    type="radio"
+                    name="category_id"
+                    value={2}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+              <div className={style.detaBox}>
+                <label htmlFor="">作品名</label>
+                <input
+                  type="text"
+                  name="work_name"
+                  placeholder="作品名"
+                  value={formData.work_name}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className={style.detaBox}>
+                <label htmlFor="">作品説明</label>
+                <input
+                  type="text"
+                  name="explanation"
+                  placeholder="説明"
+                  value={formData.explanation}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className={style.detaBox}>
+                <label htmlFor="">技術的ポイント</label>
+                <input
+                  type="text"
+                  name="technical_points"
+                  placeholder="技術的説明"
+                  value={formData.technical_points}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className={style.detaBox}>
+                <label htmlFor="">サムネ画像</label>
+                <input type="file" name="title_image" onChange={handleInputChange} />
+              </div>
+              <button
+                type="submit"
+                onClick={() => setModal(false)}
+              >送信</button>
+            </form>
+          </div>
+        </Modal>
+      }
+
+
       <div className={style.homeWrap}>
 
         <Header />
@@ -192,7 +329,10 @@ export default function Home() {
               <li>月末 投票締め切り</li>
             </ul>
             <div className={style.btnBox}>
-              <button className={style.btn}>思い出を残す！</button>
+              <button
+                className={style.btn}
+                onClick={() => setModal(true)}
+              >思い出を残す！</button>
             </div>
           </div>
           <div className={style.rightBox}>
