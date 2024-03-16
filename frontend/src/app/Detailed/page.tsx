@@ -64,61 +64,27 @@ export default function Detailed() {
                             <div></div>
                             {/* ここに星のアイコンを追加する */}
                         </div>
-                        <figure>
+                        {/* <figure>
                             作品の詳細画像
                             <img src="/" alt="" />
-                        </figure>
-                        {/* <iframe src="https://codesandbox.io/p/devbox/github/white160114/areaprize/tree/develop/frontend?embed=1&file=%2Fsrc%2Fapp%2Fpage.tsx"
-                            style={{ width: "100%", height: '500px' }}
+                        </figure> */}
+                        <iframe src="https://codesandbox.io/p/devbox/github/white160114/areaprize/tree/develop/frontend?embed=1&file=%2Fsrc%2Fapp%2Fpage.tsx"
+                            style={{ width: "100%", height: '700px' }}
                             title="frontend"
                             allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
                             sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-                        ></iframe> */}
+                        ></iframe>
                     </div>
                     <div className={style.detaileText}>
                         <h4>作品説明</h4>
                         <p>
-                            ここには作品概要が入ります。
-                            ここには作品概要が入ります。
-                            ここには作品概要が入ります。
-                            ここには作品概要が入ります。
-                            ここには作品概要が入ります。
-                            ここには作品概要が入ります。
+                            「エリアプライズ」は、地域活性化と学びを融合したプラットフォームです。地域の魅力や文化を探求しながら、新しいスキルを習得できます。地元のイベントや伝統的な工芸品、料理レシピなど、地域に関連する多彩なコンテンツを提供します。専門家によるワークショップやオンラインコースを通じて、学びと地域のつながりを深める場を提供します。エリアプライズは、地域の発展と成長を支援し、持続可能な未来の実現に貢献します。
                         </p>
                     </div>
                     <div className={style.detaileText}>
                         <h4>技術的ポイント</h4>
                         <p>
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
-                            ここには技術的ポイントが入ります。
+                            「エリアプライズ」は、Next.jsとNode.jsを活用し、地域活性化と学びを結びつけた革新的なウェブプラットフォームです。Next.jsのSSR（サーバーサイドレンダリング）とNode.jsの柔軟性を活かし、ユーザーはリアルタイムで地域情報や学習コンテンツにアクセスできます。また、モダンな技術スタックを用いた開発により、スムーズなユーザーエクスペリエンスと効率的なサイト運営を実現しています。エリアプライズは、地域社会の発展とユーザーの学びのニーズに対応するために、最新のWebテクノロジーを駆使しています
                         </p>
                     </div>
                     <div className={style.coment}>
@@ -137,12 +103,12 @@ export default function Detailed() {
                                 </figure>
                             </div>
                             <p>
-                                ここには作品概要が入ります。
-                                ここには作品概要が入ります。
-                                ここには作品概要が入ります。
-                                ここには作品概要が入ります。
-                                ここには作品概要が入ります。
-                                ここには作品概要が入ります。
+                                学習できるコンテストなんてやる気しか出ない！
+                                学習できるコンテストなんてやる気しか出ない！
+                                学習できるコンテストなんてやる気しか出ない！
+                                学習できるコンテストなんてやる気しか出ない！
+                                学習できるコンテストなんてやる気しか出ない！
+                                学習できるコンテストなんてやる気しか出ない！
                             </p>
                         </div>
                     </div>
