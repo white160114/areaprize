@@ -21,7 +21,7 @@ type Props = {
   step: string
 }
 
-
+const url = 'https://areaprize.kurumimnm.net/data/all';
 const categoryUrl = "https://areaprize.kurumimnm.net/data/CATEGORY";
 const workUrl = "https://areaprize.kurumimnm.net/work/data";
 const userUrl = "https://areaprize.kurumimnm.net/data/USERS";
@@ -319,7 +319,7 @@ export default function Home() {
           <div className={style.textBox}>
             <p>今回旅する都道府県は...</p>
             {/* TODO h2にはお題の内容をいれる */}
-            <h2>「大阪府の通天閣」</h2>
+            <h2>「愛媛県の特産物」</h2>
             <ul className={style.list}>
               <li>3/1 お題決定、エントリー開始</li>
               <li>3/4 エントリー締め切り</li>
