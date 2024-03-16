@@ -12,26 +12,26 @@ import Tab from '@/components/Tab';
 import Card from '@/components/Card';
 import { Console } from 'console'
 
-const userDataUrl ="https://areaprize.kurumimnm.net/user/data";
+const userDataUrl = "https://areaprize.kurumimnm.net/user/data";
 const userUrl = "https://areaprize.kurumimnm.net/data/USERS";
-const rankUrl ="https://areaprize.kurumimnm.net/data/RANKS";
+const rankUrl = "https://areaprize.kurumimnm.net/data/RANKS";
 
 
 
-const fetchData= async (url: string) => {
+const fetchData = async (url: string) => {
     const response = await fetch(url);
     const data = await response.json();
     return data;
 };
 const fetchAllData = async () => {
-    const [userworkData,usersData,rankData] = await Promise.all([
+    const [userworkData, usersData, rankData] = await Promise.all([
         fetchData(userDataUrl),
         fetchData(userUrl),
         fetchData(rankUrl),
 
-        
+
     ]);
-    return { userworkData, usersData, rankData};
+    return { userworkData, usersData, rankData };
 };
 
 
@@ -41,35 +41,41 @@ export default function MyPage() {
     const [accordion, setAccordion] = useState(false)
 
     //Data
-    const [userworkData, setUserworkData ] = useState<any[]>([]);
-    const [usersData, setUsersData] =  useState<any[]>([]);
+    const [userworkData, setUserworkData] = useState<any[]>([]);
+    const [usersData, setUsersData] = useState<any[]>([]);
     const [rankData, setRankData] = useState<any[]>([]);
 
     //Culums
-    const [userId,setUserId] = useState<number[]>([]);
-    const [userData,setUserData] = useState<any[]>([]);
-    const [userWorks,setUserWorks] = useState<any[]>([]);
-    const [userBookmarks,setUserBookmarks] = useState<any[]>([]);
+    const [userId, setUserId] = useState<number[]>([]);
+    const [userData, setUserData] = useState<any[]>([]);
+    const [userWorks, setUserWorks] = useState<any[]>([]);
+    const [userBookmarks, setUserBookmarks] = useState<any[]>([]);
 
     //login[値変えたらログインしてる人も変わるよ。]
-    const [loginid, setLoginId] = useState<number>(0); 
+    const [loginid, setLoginId] = useState<number>(0);
 
     useEffect(() => {
         const fetchDataAndUpdate = async () => {
             try {
-                const { userworkData, usersData, rankData} = await fetchAllData();
+                const { userworkData, usersData, rankData } = await fetchAllData();
 
                 const userIds = userworkData.map((userData: any) => userData.user_id); //user_id
                 const userData = userworkData.map((userData: any) => userData.data); //userの情報
                 const userWorks = userworkData.map((userData: any) => userData.works); //userの作品
                 const userBookmarks = userworkData.map((userData: any) => userData.bookmarks); //userのbookmark
+
+
+
+
+
     
                 const updatedLoginId = usersData[loginid].user_id -1;
                 // console.log(loginid);
                 // console.log(usersData[loginid].user_id);
                 // console.log(usersData[loginid].rank_point);
 
-            
+
+
                 setUserworkData(userworkData);
                 setUserId(userIds);
                 setUserData(userData);
@@ -92,6 +98,7 @@ export default function MyPage() {
 
 
     // ブックマークされた作品のコンポーネントの部分で以下のように変更します
+
 userBookmarks[loginid]?.map((bookmark: any) => {
     const bookmarkedWorkId = bookmark.work_id;
 
@@ -142,10 +149,10 @@ console.log("らんく！！！！！！！"+myRankId);
                             </figure>
                         </div>
                         <div className={style.formContent}>
-                          <label htmlFor="">ユーザーネーム</label>
+                            <label htmlFor="">ユーザーネーム</label>
                             <input type="text" defaultValue={usersData[loginid]?.user_name || ''} />
-                           
-                           
+
+
                         </div>
                         {/* 編集するかしないかで表示する矢印の方向を変える */}
                         {!accordion &&
@@ -167,8 +174,8 @@ console.log("らんく！！！！！！！"+myRankId);
                                 <label htmlFor="">メールアドレス</label>
 
 
-                                <input type="text"  defaultValue={usersData[loginid]?.mail || ''}  /> 
-                                
+                                <input type="text" defaultValue={usersData[loginid]?.mail || ''} />
+
 
                             </div>
                             <div className={style.btnBox}>
@@ -185,13 +192,17 @@ console.log("らんく！！！！！！！"+myRankId);
                     <p>現在のランク</p>
                     <div className={style.rankContent}>
                         <figure>
+
+
+
                         <img src={myRank} alt="" />
+
                         </figure>
                         <div className={style.meterBox}>
                             <div className={style.meter}>
                                 <div
                                     className={style.gauge}
-                                    style={{ width:'50%', height: '100%' }}
+                                    style={{ width: '50%', height: '100%' }}
                                 ></div>
                             </div>
                         </div>
@@ -202,33 +213,33 @@ console.log("らんく！！！！！！！"+myRankId);
                 </div>
 
 
-        <Tab
-                tab01='あなたの過去の記録'
-                tab02='いいねした作品'
-                children01={
-        userWorks[loginid]?.map((work: any) => (
-            <Card
-                key={work.work_id}
-                iconImage={usersData[loginid]?.profile_icon}
-                userName={usersData[loginid]?.user_name}
-                rankIcon={userData[loginid][0]?.rank_icon}
-                titleImage={work.title_image} />
-        ))
-    }
-    //TODO:値べた書き直す
-    children02={
-        userBookmarks[loginid]?.map((bookmark: any) => (
-            <Card
-                key={bookmark.work_id}
-                iconImage={usersData[1]?.profile_icon}
-                userName={usersData[1]?.user_name}
-                rankIcon={userData[1][0]?.rank_icon}
-                titleImage={bookmark.title_image}
-                workName={bookmark.work_name}
-            />
-        ))
-    }
-/>
+                <Tab
+                    tab01='あなたの過去の記録'
+                    tab02='いいねした作品'
+                    children01={
+                        userWorks[loginid]?.map((work: any) => (
+                            <Card
+                                key={work.work_id}
+                                iconImage={usersData[loginid]?.profile_icon}
+                                userName={usersData[loginid]?.user_name}
+                                rankIcon={userData[loginid][0]?.rank_icon}
+                                titleImage={work.title_image} />
+                        ))
+                    }
+                    //TODO:値べた書き直す
+                    children02={
+                        userBookmarks[loginid]?.map((bookmark: any) => (
+                            <Card
+                                key={bookmark.work_id}
+                                iconImage={usersData[1]?.profile_icon}
+                                userName={usersData[1]?.user_name}
+                                rankIcon={userData[1][0]?.rank_icon}
+                                titleImage={bookmark.title_image}
+                                workName={bookmark.work_name}
+                            />
+                        ))
+                    }
+                />
 
 
                 <Footer />
