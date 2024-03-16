@@ -21,7 +21,7 @@ type Props = {
   step: string
 }
 
-
+const url = 'https://areaprize.kurumimnm.net/data/all';
 const categoryUrl = "https://areaprize.kurumimnm.net/data/CATEGORY";
 const workUrl = "https://areaprize.kurumimnm.net/work/data";
 const userUrl = "https://areaprize.kurumimnm.net/data/USERS";

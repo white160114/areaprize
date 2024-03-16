@@ -10,6 +10,7 @@ import { Footer } from '@/components/Footer'
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import Tab from '@/components/Tab';
 import Card from '@/components/Card';
+import { Console } from 'console'
 
 const userDataUrl ="https://areaprize.kurumimnm.net/user/data";
 const userUrl = "https://areaprize.kurumimnm.net/data/USERS";
@@ -32,6 +33,7 @@ const fetchAllData = async () => {
     ]);
     return { userworkData, usersData, rankData};
 };
+
 
 
 export default function MyPage() {
@@ -63,13 +65,9 @@ export default function MyPage() {
                 const userBookmarks = userworkData.map((userData: any) => userData.bookmarks); //userのbookmark
     
                 const updatedLoginId = usersData[loginid].user_id -1;
-                console.log(loginid);
-                console.log(usersData[loginid].user_id);
-                console.log(usersData[loginid].rank_point);
-
-
-
-
+                // console.log(loginid);
+                // console.log(usersData[loginid].user_id);
+                // console.log(usersData[loginid].rank_point);
 
             
                 setUserworkData(userworkData);
@@ -95,20 +93,14 @@ export default function MyPage() {
 
     // ブックマークされた作品のコンポーネントの部分で以下のように変更します
 userBookmarks[loginid]?.map((bookmark: any) => {
-    // ブックマークされた作品のID
     const bookmarkedWorkId = bookmark.work_id;
 
-    // ブックマークされた作品のIDと一致する作品を探す
     const correspondingWork = userWorks[loginid]?.find((work: any) => work.work_id === bookmarkedWorkId);
 
     if (correspondingWork) {
-        // 対応する作品が見つかった場合、その作品の作成者のユーザーIDを取得
         const creatorUserId = correspondingWork.user_id;
-
-        // 作成者の情報を取得
         const creatorInfo = userData.find((user: any) => user.data[0].user_id === creatorUserId);
         
-        // 作成者のアイコンと名前を取得
         const creatorIcon = creatorInfo?.data[0].profile_icon;
         const creatorName = creatorInfo?.data[0].user_name;
 
@@ -126,9 +118,14 @@ userBookmarks[loginid]?.map((bookmark: any) => {
         // 対応する作品が見つからなかった場合は何も表示しない
         return null;
     }
-})
+});
 
-    
+
+
+const myRank =userData[loginid]?.[0]?.rank_icon;
+const myRankId = rankData[0]?.rank_id;
+
+console.log("らんく！！！！！！！"+myRankId);
     return (
         <>
             <div className={style.myPageWrap}>
@@ -188,7 +185,7 @@ userBookmarks[loginid]?.map((bookmark: any) => {
                     <p>現在のランク</p>
                     <div className={style.rankContent}>
                         <figure>
-                        <img src={userData[loginid]?.[0]?.rank_icon} alt="" />
+                        <img src={myRank} alt="" />
                         </figure>
                         <div className={style.meterBox}>
                             <div className={style.meter}>
@@ -199,7 +196,7 @@ userBookmarks[loginid]?.map((bookmark: any) => {
                             </div>
                         </div>
                         <figure>
-                            <img src="/image/3Master.svg" alt="" />
+                            <img src="/image/5Hermit.svg" alt="" />
                         </figure>
                     </div>
                 </div>
