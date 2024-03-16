@@ -7,7 +7,7 @@ import style from "./page.module.scss";
 
 import { FaRegLightbulb } from "react-icons/fa";
 import Tab from '@/components/Tab'
-import Card from '@/components/Tab'
+import Card from '@/components/Card'
 
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
@@ -22,14 +22,28 @@ type Props = {
 }
 
 
-const url = "https://areaprize.kurumimnm.net/data/all";
+const categoryUrl = "https://areaprize.kurumimnm.net/data/CATEGORY";
+const workUrl = "https://areaprize.kurumimnm.net/work/data";
+const userUrl = "https://areaprize.kurumimnm.net/data/USERS";
+const rankUrl = "https://areaprize.kurumimnm.net/data/RANKS";
 
-const fetchData = async () => {
+const fetchData= async (url: string) => {
   const response = await fetch(url);
-  const all_data = await response.json();
-
-  return all_data;
+  const data = await response.json();
+  return data;
 };
+
+const fetchAllData = async () => {
+  const [categoryData, workData, userData, rankData] = await Promise.all([
+      fetchData(categoryUrl),
+      fetchData(workUrl),
+      fetchData(userUrl),
+      fetchData(rankUrl),
+  ]);
+  return { categoryData, workData, userData, rankData };
+};
+
+
 
 export default function Home() {
   // 解説のするときのTabcomponentを作成
@@ -66,27 +80,55 @@ export default function Home() {
   const [testData, setTestData] = useState<string[]>([]);
 
 
+  // Data(Table)
+  const [categoryData, setCategoryData] = useState<any[]>([]);
+  const [workData, setWorkData] = useState<any[]>([]);
+  const [userData, setUserData] = useState<any[]>([]);
+  const [rankData, setRankData] = useState<any[]>([]);
+  // Columns
+  const [categoryName, setCategoryName] = useState<string[]>([]);
+
+
   useEffect(() => {
-    const fetchDataAndUpdateUserNames = async () => {
-      const data: any = await fetchData();
+      const fetchDataAndUpdate = async () => {
+          try {
+              const { categoryData, workData, userData, rankData } = await fetchAllData();
+              setCategoryData(categoryData);
+              setWorkData(workData);
+              setUserData(userData);
+              setRankData(rankData);
+              setCategoryName(categoryData.map((category: any) => category.category_name));
+          } catch (error) {
+              console.error('Error fetching data:', error);
+          }
+      };
 
-      const names = data.USERS.map((user: any) => user.user_name);
+      fetchDataAndUpdate();
+      const intervalId = setInterval(fetchDataAndUpdate, 10000);
+      return () => clearInterval(intervalId);
+  }, []);
 
-      const test_data = data.TEST.map((text: any) => text.text);
+  const getCategoryWorks = (categoryId: number) => {
+    const works = workData.find((workCategory: any) => workCategory.category_id === categoryId)?.work_data || [];
+    return works.map((work: any) => {
+        const user = userData.find((user: any) => user.user_id === work.made_by);
+        const rankIcon = getRankIcon(user.rank_point);
+        return (
+          <Card key={work.work_id} id={work.work_id} iconImage={user.profile_icon} userName={user?.user_name} rankIcon={rankIcon} titleImage={work.title_image} />
+          );
+    });
+};
 
-      setUserNames(names);
-      setTestData(test_data);
-    };
 
-    fetchDataAndUpdateUserNames();
-
-    const intervalId = setInterval(fetchDataAndUpdateUserNames, 10000); // 10秒ごとにデータを取得
-
-    return () => clearInterval(intervalId); // クリーンアップ関数でタイマーをクリア
-  }, []); // 空の依存配列を渡して初回のみ実行する
-
-  console.log(userNames, testData);
-
+  const getRankIcon = (rankPoint: number) => {
+    for (let i = 0; i < rankData.length; i++) {
+      const rank = rankData[i];
+      if (rankPoint >= rank.low_point && rankPoint <= rank.high_point) {
+        return rank.icon;
+      }
+    }
+    return "";
+  };
 
 
   // アップロード処理
@@ -298,9 +340,13 @@ export default function Home() {
             <div></div>
           </div>
         </div>
-        <Tab children01={<Card />} children02={<Card />} />
+        <Tab
+                tab01={categoryName[0]}
+                children01={<div>{getCategoryWorks(1)}</div>}
+                tab02={categoryName[1]}
+                children02={<div>{getCategoryWorks(2)}</div>}
+            />  
       </div>
-
       <Footer />
     </>
   );

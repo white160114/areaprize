@@ -93,15 +93,41 @@ export default function MyPage() {
     }, []);
 
 
-    const getRankIcon = (rankPoint: number) => {
-        for (let i = 0; i < rankData.length; i++) {
-            const rank = rankData[i];
-            if (rankPoint >= rank.low_point && rankPoint <= rank.high_point) {
-                return rank.icon; 
-            }
-        }
-        return ""; 
-    };
+    // ブックマークされた作品のコンポーネントの部分で以下のように変更します
+userBookmarks[loginid]?.map((bookmark: any) => {
+    // ブックマークされた作品のID
+    const bookmarkedWorkId = bookmark.work_id;
+
+    // ブックマークされた作品のIDと一致する作品を探す
+    const correspondingWork = userWorks[loginid]?.find((work: any) => work.work_id === bookmarkedWorkId);
+
+    if (correspondingWork) {
+        // 対応する作品が見つかった場合、その作品の作成者のユーザーIDを取得
+        const creatorUserId = correspondingWork.user_id;
+
+        // 作成者の情報を取得
+        const creatorInfo = userData.find((user: any) => user.data[0].user_id === creatorUserId);
+        
+        // 作成者のアイコンと名前を取得
+        const creatorIcon = creatorInfo?.data[0].profile_icon;
+        const creatorName = creatorInfo?.data[0].user_name;
+
+        return (
+            <Card
+                key={bookmark.work_id}
+                iconImage={creatorIcon}
+                userName={creatorName}
+                rankIcon={userData[loginid][0]?.rank_icon}
+                titleImage={bookmark.title_image}
+                workName={bookmark.work_name}
+            />
+        );
+    } else {
+        // 対応する作品が見つからなかった場合は何も表示しない
+        return null;
+    }
+})
+
     
     return (
         <>
@@ -162,7 +188,7 @@ export default function MyPage() {
                     <p>現在のランク</p>
                     <div className={style.rankContent}>
                         <figure>
-                            <img src={userData[loginid][0]?.rank_icon} alt="" />
+                        <img src={userData[loginid]?.[0]?.rank_icon} alt="" />
                         </figure>
                         <div className={style.meterBox}>
                             <div className={style.meter}>
@@ -179,13 +205,10 @@ export default function MyPage() {
                 </div>
 
 
-               
-
-
-                <Tab
-    tab01='あなたの過去の記録'
-    tab02='いいねした作品'
-    children01={
+        <Tab
+                tab01='あなたの過去の記録'
+                tab02='いいねした作品'
+                children01={
         userWorks[loginid]?.map((work: any) => (
             <Card
                 key={work.work_id}
@@ -195,7 +218,19 @@ export default function MyPage() {
                 titleImage={work.title_image} />
         ))
     }
-    children02={"aaaa"}
+    //TODO:値べた書き直す
+    children02={
+        userBookmarks[loginid]?.map((bookmark: any) => (
+            <Card
+                key={bookmark.work_id}
+                iconImage={usersData[1]?.profile_icon}
+                userName={usersData[1]?.user_name}
+                rankIcon={userData[1][0]?.rank_icon}
+                titleImage={bookmark.title_image}
+                workName={bookmark.work_name}
+            />
+        ))
+    }
 />
 
 
