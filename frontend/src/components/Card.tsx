@@ -4,18 +4,18 @@ import PhotoIcon from "@/components/Icon";
 
 
 interface PropsType {
-    id?:number;
-    iconImage?:string;
-    titleImage?:string;
-    userName?:string;
-    workName?:string;
-    rankIcon:string;
+    id?: number;
+    iconImage?: string;
+    titleImage?: string;
+    userName?: string;
+    workName?: string;
+    rankIcon: string;
 
 }
 
 const Card = (props: PropsType) => {
-    
-    const { iconImage,userName,titleImage,workName ,rankIcon} = props;
+
+    const { iconImage, userName, titleImage, workName, rankIcon } = props;
     const handleBookmarkClick = () => {
         // ブックマークがクリックされたときの処理を記述する
     };
@@ -35,20 +35,23 @@ const Card = (props: PropsType) => {
                     <p className={style.userName}>{userName}</p>
                     <div className={style.rank}>
                         <figure>
-                            <img src={rankIcon} alt='rank'/>
+                            <img src={rankIcon} alt='rank' />
                         </figure>
                     </div>
                 </div>
                 <div className={style.user_evaluation}>
                     <div className={style.bookmark}>
-                        <input onClick={handleBookmarkClick} type="image" src='/image/bookmark.png' alt="bookmark"/>
+                        <input onClick={handleBookmarkClick} type="image" src='/image/bookmark.png' alt="bookmark" />
                     </div>
                     <div className={style.like}>
-                        <input onClick={handleLikeClick} type="image" src='/image/like.png' alt="like"/>
+                        <input onClick={handleLikeClick} type="image" src='/image/like.png' alt="like" />
                     </div>
                 </div>
             </div>
-            <div className={style.contents}>
+            <div
+                className={style.contents}
+                onClick={() => location.href = '/Detailed'}
+            >
                 <figure>
                     <img className='bookmark' src={titleImage} alt={workName} />
                 </figure>
