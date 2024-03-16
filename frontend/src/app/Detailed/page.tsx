@@ -52,7 +52,7 @@ export default function Detailed() {
                         </figure>
                         <p>UserName</p>
                         <figure>
-                            <img src="" alt="" />
+                            <img src="" alt="rankIcon" />
                         </figure>
                     </div>
                 </div>
@@ -65,9 +65,15 @@ export default function Detailed() {
                             {/* ここに星のアイコンを追加する */}
                         </div>
                         <figure>
-                            {/* 作品の詳細画像 */}
+                            作品の詳細画像
                             <img src="/" alt="" />
                         </figure>
+                        {/* <iframe src="https://codesandbox.io/p/devbox/github/white160114/areaprize/tree/develop/frontend?embed=1&file=%2Fsrc%2Fapp%2Fpage.tsx"
+                            style={{ width: "100%", height: '500px' }}
+                            title="frontend"
+                            allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+                            sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+                        ></iframe> */}
                     </div>
                     <div className={style.detaileText}>
                         <h4>作品説明</h4>
