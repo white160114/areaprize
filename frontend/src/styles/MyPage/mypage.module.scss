@@ -1,0 +1,195 @@
+.myPageWrap {
+    width: 100%;
+    height: 100%;
+    background-color: #E0F1F1;
+
+    .sampleHeader {
+        width: 100%;
+        height: 8vh;
+        background-color: #5188B1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        & h1 {
+            font-size: 2rem;
+            color: #ffffff;
+            padding-left: 1rem;
+        }
+    }
+
+    .formBox {
+        width: 1000px;
+        height: 100%;
+        margin: 3rem auto;
+
+        .formTop {
+            width: 100%;
+            height: 250px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+            background-color: #ffffff;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+
+            .iconBox {
+                border: none;
+                width: 6.5rem;
+                height: 6.5rem;
+
+                & figure {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+
+                    & img {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                        background-color: tomato;
+                    }
+                }
+            }
+
+            .formContent {
+                width: 32rem;
+                height: 6.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: .5rem;
+
+                & input[type="text"] {
+                    border: 0;
+                    width: 31rem;
+                    height: 3.5rem;
+                    border-bottom: 1px solid #CBCBCB;
+                    background-color: transparent;
+
+                    &:focus {
+                        border-bottom-color: tomato;
+                        outline: none;
+                    }
+                }
+            }
+
+            & .icon {
+                font-size: 1.5rem;
+            }
+        }
+
+        .formBottom {
+            width: 100%;
+            height: 250px;
+            box-shadow: 0px 5px 5px rgba(0, 0, 0, .2) inset;
+            background-color: #ffffff;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            .formContent {
+                width: 32rem;
+                height: 6.5rem;
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: .5rem;
+                margin-left: 5rem;
+
+                & input[type="text"] {
+                    border: 0;
+                    width: 31rem;
+                    height: 3.5rem;
+                    border-bottom: 1px solid #CBCBCB;
+                    background-color: transparent;
+
+                    &:focus {
+                        border-bottom-color: tomato;
+                        outline: none;
+                    }
+                }
+            }
+
+            .btnBox {
+                width: 100%;
+                height: 2rem;
+                margin: 1.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                & button {
+                    width: 7rem;
+                    height: 2.5rem;
+                    border: 1px solid #262626;
+                    text-align: center;
+                    line-height: 2.5;
+                    background-color: #ffffff;
+                }
+            }
+        }
+    }
+
+    .rankBox {
+        width: 1000px;
+        height: 19rem;
+        margin: 5rem auto;
+        background-color: #F2E9CC;
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, .2) inset;
+        border-radius: 30px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+
+        & P {
+            font-size: 2rem;
+        }
+
+        .rankContent {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            & figure {
+                width: 200px;
+                height: 150px;
+
+                & img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .meterBox {
+                width: 20rem;
+                height: 1.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .meter {
+                    width: 15rem;
+                    height: 1rem;
+                    border: 4px solid #91AA5E;
+                    border-radius: 20px;
+
+                    .gauge {
+                        background-color: #AED265;
+                        border-radius: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
